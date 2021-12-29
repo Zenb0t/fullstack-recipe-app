@@ -6,7 +6,7 @@ import React from 'react';
 import RecipeModel from './RecipeModel';
 
 
-export default function RecipeCard (props: { recipe: RecipeModel }) {
+export default function RecipeCard(props: { recipe: RecipeModel }) {
 
     const handleAction = () => {
         console.log(recipe);
@@ -14,21 +14,22 @@ export default function RecipeCard (props: { recipe: RecipeModel }) {
 
     let recipe = props.recipe;
 
-    return (<Card sx={{ maxWidth: "345px" }}>
-        <CardActionArea onClick={handleAction}>
-            <CardMedia
-                component="img"
-                height="140"
-                image={recipe.image}
-                alt={recipe.title}
-            />
-            <CardContent>
-                <h2>{recipe.title}</h2>
-                <p>{recipe.description}</p>
-            </CardContent>
-        </CardActionArea>
+    return (
+        <Card sx={{ maxWidth: "345px" }}>
+            <CardActionArea onClick={handleAction}>
+                <CardMedia
+                    component="img"
+                    height="140"
+                    image={recipe.image}
+                    alt={recipe.title}
+                />
+                <CardContent>
+                    <h2>{recipe.title}</h2>
+                    <p>{recipe.description}</p>
+                </CardContent>
+            </CardActionArea>
 
-    </Card>
+        </Card>
     );
 
 }

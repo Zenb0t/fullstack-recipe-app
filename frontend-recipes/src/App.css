@@ -1,44 +1,16 @@
-.App {
+.recipe-form {
+ /* margin: 1rem  auto; */
+  padding: 1rem;
   text-align: center;
+  min-width: 200px;
 }
 
-.recipe-form {
-  padding-top: 5rem;
-  height: 40vmin;
+.recipe-form > h1 {
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .form-button {
   margin-top: 2rem;
   color: aliceblue;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
 }
