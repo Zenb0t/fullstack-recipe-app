@@ -6,5 +6,7 @@ export default interface RecipeModel {
     description: string;
     ingredients: string;
     instructions: string;
-    image: string;
+    imageUrl: string;
+    favorite: boolean;
+    id: string;
 }

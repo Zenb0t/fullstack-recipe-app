@@ -20,7 +20,7 @@ export default function RecipeCard(props: { recipe: RecipeModel }) {
                 <CardMedia
                     component="img"
                     height="140"
-                    image={recipe.image}
+                    image={recipe.imageUrl}
                     alt={recipe.title}
                 />
                 <CardContent>

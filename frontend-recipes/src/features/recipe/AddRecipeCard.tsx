@@ -13,7 +13,7 @@ export default function AddRecipeCard() {
 
 
     return <div>
-    <Card sx={{ maxWidth: "345px", textAlign: "center" }}>
+    <Card sx={{ maxWidth: "345px", minWidth: "210px", textAlign: "center" }}>
         <CardActionArea onClick={handleClickOpen}>
             <CardContent>
                 <AddCircleIcon sx={{ height: 60, width: 60 }} />
@@ -22,7 +22,7 @@ export default function AddRecipeCard() {
         </CardActionArea>
     </Card>
     <Dialog open={open} onClose={handleClose}>
-        <RecipeForm />  
+        <RecipeForm handleClose={handleClose} />  
     </Dialog>
     </div>;
 }
