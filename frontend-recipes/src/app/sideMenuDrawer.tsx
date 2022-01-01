@@ -1,8 +1,10 @@
-import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import MenuIcon from '@mui/icons-material/Menu';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import React from "react";
 import { MagicButton } from "../MagicButton";
+import { NavLink } from "react-router-dom";
 
 export const drawerWidth = 240;
 
@@ -13,15 +15,29 @@ export default function SideDrawer() {
         setMobileOpen(!mobileOpen);
     };
 
+
+
     const drawer = (
         <div>
             <Toolbar />
             <Divider />
             <List>
                 <ListItem >
-                    <MagicButton/>
+                    <MagicButton />
                 </ListItem>
-                {['All Recipes', 'Favorites', 'With Eggs'].map((text) => (
+                <ListItemButton component={NavLink} to={'/allrecipes'} >
+                    <ListItemIcon>
+                        <MenuBookIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="All Recipes" />
+                </ListItemButton>
+                <ListItemButton component={NavLink} to={'favorites'}>
+                    <ListItemIcon>
+                        <FavoriteIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Favorite Recipes" />
+                </ListItemButton>
+                {['With Eggs'].map((text) => (
                     <ListItem button key={text}>
                         <ListItemIcon>
                             <MenuBookIcon />
@@ -59,7 +75,7 @@ export default function SideDrawer() {
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
-                {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+
                 <Drawer
                     variant="temporary"
                     open={mobileOpen}

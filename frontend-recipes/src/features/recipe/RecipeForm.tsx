@@ -13,7 +13,7 @@ import { addRecipe } from './RecipeSlice';
 
 export const RecipeForm = (props:{handleClose: Function }) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const selector = useAppSelector(state => state.recipe.recipelist);
 

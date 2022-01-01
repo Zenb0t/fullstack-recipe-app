@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
 import RecipeModel from './RecipeModel';
 
 
@@ -9,14 +9,10 @@ import RecipeModel from './RecipeModel';
 
 export interface RecipeState {
     recipelist: RecipeModel[];
-    //  loading: boolean;
-    //  error: string | null;
 }
 
 const initialState: RecipeState = {
-    recipelist: [] as RecipeModel[],
-    //  loading: false,
-    //  error: null
+    recipelist: [] as RecipeModel[], // will be initialized from async external API call.
 };
 
 export const recipeSlice = createSlice({
@@ -35,12 +31,6 @@ export const recipeSlice = createSlice({
                 Object.assign(recipe, action.payload);
             }
         },
-        // setLoading: (state, action: PayloadAction<boolean>) => {
-        //     state.loading = action.payload;
-        // },
-        // setError: (state, action: PayloadAction<string | null>) => {
-        //     state.error = action.payload;
-        // }
     },
 });
 
