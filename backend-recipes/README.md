@@ -6,17 +6,17 @@ Each user have a collection of recipes and ingredients.
 
 ## Roadmap
 
-basic operations on recipes               ✅
+* basic operations on recipes               ✅
 
-basic operations on ingredients           ✅
+* basic operations on ingredients           ✅
 
-basic operations on users                 ✅
+* basic operations on users                 ✅
 
-User authentication with JWT              ✅
+* User authentication with JWT              ✅
 
-Refactor routes on express                WIP
+* Refactor routes on express                WIP
 
-Protected Routes                          ❌  
+* Protected Routes                          ❌  
 
-Advanced queries (by multiple params)     ❌
+* Advanced queries                          ❌
 
