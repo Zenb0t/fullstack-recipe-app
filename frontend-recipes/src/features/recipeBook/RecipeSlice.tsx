@@ -8,11 +8,11 @@ import RecipeModel from './RecipeModel';
 
 
 export interface RecipeState {
-    recipelist: RecipeModel[];
+    recipeList: RecipeModel[];
 }
 
 const initialState: RecipeState = {
-    recipelist: [] as RecipeModel[], // will be initialized from async external API call.
+    recipeList: [] as RecipeModel[], // will be initialized from async external API call.
 };
 
 export const recipeSlice = createSlice({
@@ -20,13 +20,13 @@ export const recipeSlice = createSlice({
     initialState,
     reducers: {
         addRecipe: (state, action: PayloadAction<RecipeModel>) => {
-            state.recipelist.push(action.payload);
+            state.recipeList.push(action.payload);
         },
         removeRecipe: (state, action: PayloadAction<RecipeModel>) => {
-            state.recipelist = state.recipelist.filter(recipe => recipe.id !== action.payload.id);
+            state.recipeList = state.recipeList.filter(recipe => recipe.id !== action.payload.id);
         },
         updateRecipe: (state, action: PayloadAction<RecipeModel>) => {
-            const recipe = state.recipelist.find(recipe => recipe.id === action.payload.id);
+            const recipe = state.recipeList.find(recipe => recipe.id === action.payload.id);
             if (recipe) {
                 Object.assign(recipe, action.payload);
             }
@@ -34,9 +34,11 @@ export const recipeSlice = createSlice({
     },
 });
 
-export const selectRecipes = (state: RootState) => state.recipe.recipelist;
+export const selectRecipes = (state: RootState) => state.recipeBook.recipeList;
 
-export const selectFavoriteRecipes = (state: RootState) => state.recipe.recipelist.filter(recipe => recipe.favorite);
+export const selectFavoriteRecipes = (state: RootState) => state.recipeBook.recipeList.filter(recipe => recipe.favorite);
+
+export const selectRecipeById = (state: RootState, id: string) => state.recipeBook.recipeList.find(recipe => recipe.id === id);
 
 export const { addRecipe, removeRecipe, updateRecipe, } = recipeSlice.actions;
 
