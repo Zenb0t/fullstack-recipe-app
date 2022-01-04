@@ -1,5 +1,6 @@
 import { AppBar, Box, CssBaseline, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import PostAddIcon from '@mui/icons-material/PostAdd';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React from "react";
@@ -16,37 +17,35 @@ export default function SideDrawer() {
     };
 
 
-
-    const drawer = (
-        <div>
-            <Toolbar />
+//TODO: Breakdown into smaller components
+    const drawerContent = (<div>
+        <Toolbar />
+        <Divider />
+        <List>
+            <ListItem >
+                <MagicButton />
+            </ListItem>
+            <ListItemButton component={NavLink} to={'/add-recipe'} >
+                <ListItemIcon>
+                    <PostAddIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Recipe" />
+            </ListItemButton>
             <Divider />
-            <List>
-                <ListItem >
-                    <MagicButton />
-                </ListItem>
-                <ListItemButton component={NavLink} to={'/allrecipes'} >
-                    <ListItemIcon>
-                        <MenuBookIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="All Recipes" />
-                </ListItemButton>
-                <ListItemButton component={NavLink} to={'favorites'}>
-                    <ListItemIcon>
-                        <FavoriteIcon />
-                    </ListItemIcon>
-                    <ListItemText primary="Favorite Recipes" />
-                </ListItemButton>
-                {['With Eggs'].map((text) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            <MenuBookIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-        </div>);
+            <ListItemButton component={NavLink} to={'/allrecipes'} >
+                <ListItemIcon>
+                    <MenuBookIcon />
+                </ListItemIcon>
+                <ListItemText primary="All Recipes" />
+            </ListItemButton>
+            <ListItemButton component={NavLink} to={'favorites'}>
+                <ListItemIcon>
+                    <FavoriteIcon />
+                </ListItemIcon>
+                <ListItemText primary="Favorite Recipes" />
+            </ListItemButton>
+        </List>
+    </div>);
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -70,36 +69,24 @@ export default function SideDrawer() {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Box
-                component="nav"
+            <Box component="nav" aria-label="recipebook navigation"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                aria-label="mailbox folders"
             >
-
                 <Drawer
-                    variant="temporary"
-                    open={mobileOpen}
+                    variant="temporary" open={mobileOpen}
                     onClose={handleDrawerToggle}
-                    ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
-                    }}
-                    sx={{
-                        display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                    }}
+                    ModalProps={{ keepMounted: true }}
+                    sx={{ display: { xs: 'block', sm: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }, }}
                 >
-                    {drawer}
+                    {drawerContent}
                 </Drawer>
-                <Drawer
-                    variant="permanent"
-                    sx={{
-                        display: { xs: 'none', sm: 'block' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                    }}
-                    open
+                <Drawer open variant="permanent" sx={{
+                    display: { xs: 'none', sm: 'block' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                }}
                 >
-                    {drawer}
+                    {drawerContent}
                 </Drawer>
             </Box>
-        </Box>);
+        </Box >);
 }
