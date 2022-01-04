@@ -1,21 +1,19 @@
-
-
 import { Button } from "@mui/material";
 import { useAppDispatch } from "./app/hooks";
 import { store } from "./app/store";
-import { recipe } from "./fakeData";
-import { addRecipe } from './features/recipe/RecipeSlice';
+import  genRecipe  from "./fakeData";
+import { addRecipe } from './features/recipeBook/RecipeSlice';
 
 export const MagicButton = () => {
 
-    const action = () => console.log(store.getState().recipe.recipelist);
-
     const dispatch = useAppDispatch();
 
-    const add = () => dispatch(addRecipe(recipe));
+    const add = () => dispatch(addRecipe(genRecipe()));
+
+    const action = () => console.log(store.getState().recipeBook.recipeList);
 
     return (
-        <Button onClick={action}  onDoubleClick={add}      >
+        <Button variant="contained" onClick={action}  onDoubleClick={add}      >
             Magic!
         </Button>);
 }
