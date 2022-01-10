@@ -1,13 +1,18 @@
 
 
-export default interface RecipeModel {
+export interface RecipeModel {
 
     title: string;
     description: string;
     totalTime: string;
-    ingredients: string[];
+    ingredients: IngredientModel[];
     instructions: string[];
     imageUrl: string;
     favorite: boolean;
     id: string;
+}
+
+export interface IngredientModel {
+    name: string;
+    amount: string;
 }
