@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import RecipeCard from "./RecipeCard";
-import RecipeModel from "./RecipeModel";
+import {RecipeModel} from "./RecipeBookModels";
 
 
 export default function RecipeCardList(props: { recipes: RecipeModel[] }) {

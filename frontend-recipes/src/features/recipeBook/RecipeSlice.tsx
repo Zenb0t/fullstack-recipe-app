@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import RecipeModel from './RecipeModel';
+import {RecipeModel} from './RecipeBookModels';
 
 
 //TODO: Replace with real API call
@@ -31,6 +31,12 @@ export const recipeSlice = createSlice({
                 Object.assign(recipe, action.payload);
             }
         },
+        toggleFavorite: (state, action: PayloadAction<RecipeModel>) => {
+            const recipe = state.recipeList.find(recipe => recipe.id === action.payload.id);
+            if (recipe) {
+                recipe.favorite = !recipe.favorite;
+            }
+        },
     },
 });
 
@@ -40,6 +46,6 @@ export const selectFavoriteRecipes = (state: RootState) => state.recipeBook.reci
 
 export const selectRecipeById = (state: RootState, id: string) => state.recipeBook.recipeList.find(recipe => recipe.id === id);
 
-export const { addRecipe, removeRecipe, updateRecipe, } = recipeSlice.actions;
+export const { addRecipe, removeRecipe, updateRecipe, toggleFavorite } = recipeSlice.actions;
 
 export default recipeSlice.reducer;
