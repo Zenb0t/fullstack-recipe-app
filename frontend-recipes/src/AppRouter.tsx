@@ -4,7 +4,7 @@ import { useAppSelector } from "./app/hooks";
 import { selectRecipes, selectFavoriteRecipes } from "./features/recipeBook/RecipeSlice";
 import App from "./App";
 import RecipeDetail from "./features/recipeBook/RecipeDetail";
-import { RecipeForm } from "./features/recipeBook/RecipeForm";
+import { RecipeForm } from "./features/recipeBook/form/RecipeForm";
 
 /**Contains the routes for the application */
 export default function AppRouter() {
