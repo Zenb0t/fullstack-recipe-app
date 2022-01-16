@@ -49,27 +49,11 @@ export default function RecipeDetail() {
                 )
             })}
         </Box>;
-
-        const FavIcon = () => <IconButton size="large" onClick={() => dispatch(toggleFavorite(recipe!))}>{favoriteIcon}</IconButton>
-
-
+        
     const Spacer = (props: { spacing: number }) => <Box sx={{ p: props.spacing }} />;
 
     const favoriteIcon = (recipe?.favorite) ? <FavoriteIcon htmlColor='red' /> : <FavoriteBorderIcon htmlColor='red' />;
-
-    const RecipeHeader = () => (
-        <Box>
-            <RecipeTitle />
-            <Stack>
-                <b>Total time: </b><RecipeTime />
-                <IconButton onClick={() => dispatch(toggleFavorite(recipe!))}>{favoriteIcon}</IconButton>
-            </Stack>
-
-            <Spacer spacing={2} />
-            <RecipeDescription />
-        </Box>
-    );
-
+    const FavIcon = () => <IconButton size="large" onClick={() => dispatch(toggleFavorite(recipe!))}>{favoriteIcon}</IconButton>
 
     return (
         <Grid container spacing={5} p={3}
