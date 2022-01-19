@@ -5,7 +5,7 @@ import drawerWidth from './app/sideMenuDrawer';
 import { Outlet } from 'react-router-dom';
 
 
-
+/** The enter point to the main application */
 function App() {
 
   return (
