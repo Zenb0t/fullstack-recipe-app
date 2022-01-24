@@ -1,6 +1,6 @@
 const Recipe = require('../models/recipe');
 
-//Create a new recipe
+/**Create a new recipe */
 exports.create = (req, res) => {
     //let recipe = req.body;
     //todo: add validation
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 }
 
 
-//Return all recipes from the db
+/**Return all recipes from the db */
 exports.findAll = (req, res) => {
     Recipe.find()
         .then((recipes) => {
@@ -26,7 +26,7 @@ exports.findAll = (req, res) => {
         })
 }
 
-//Return a recipe by id
+/**Return a recipe by id */
 exports.findOne = (req, res) => {
     Recipe.findById(req.params.id)
         .then((recipe) => {
@@ -45,7 +45,7 @@ exports.findOne = (req, res) => {
         });
 }
 
-//Remove recipe from the db
+/**Remove recipe from the db */
 exports.delete = (req, res) => {
     Recipe.findByIdAndDelete(req.params.id)
         .then((recipe) => {
@@ -57,11 +57,9 @@ exports.delete = (req, res) => {
         })
 }
 
-//Update an recipe by id
-
+/**Update an recipe by id   */
 exports.updateRecipe = (req, res) => {
     //todo Add validation of req.body
-
     Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true })
         .then((recipe) => {
             if (!recipe) return res.status(404).send({ message: "recipe not found" });

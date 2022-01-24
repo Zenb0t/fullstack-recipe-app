@@ -1,6 +1,6 @@
 const Ingredient = require('../models/ingredient');
 
-//Create a new ingredient
+/**Create a new ingredient */
 exports.create = (req, res) => {
     //let ingredient = req.body;
     //todo: add validation
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 }
 
 
-//Return all ingredients from the db
+/**Return all ingredients from the db */
 exports.findAll = (req, res) => {
     Ingredient.find()
         .then((ingredients) => {
@@ -26,7 +26,7 @@ exports.findAll = (req, res) => {
         })
 }
 
-//Return an ingredient by id
+/**Return an ingredient by id */
 exports.findOne = (req, res) => {
     Ingredient.findById(req.params.id)
         .then((ingredient) => {
@@ -45,7 +45,7 @@ exports.findOne = (req, res) => {
         });
 }
 
-//Remove ingredient from the db
+/**Remove ingredient from the db */
 exports.delete = (req, res) => {
     Ingredient.findByIdAndDelete(req.params.id)
         .then((ingredient) => {
@@ -57,8 +57,7 @@ exports.delete = (req, res) => {
         })
 }
 
-//Update an ingredient by id
-
+/**Update an ingredient by id */
 exports.updateIngredient = (req, res) => {
     //todo Add validation of req.body
 

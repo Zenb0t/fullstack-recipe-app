@@ -64,6 +64,7 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
+//Set port and listen
 
 const port = process.env.PORT || 3000;
 
@@ -71,6 +72,7 @@ app.listen(port, () => {
     console.log(`listening on port ${port}`)
 });
 
+// Routes
 app.use(userRouter);
 app.use(ingredientRouter);
 app.use(recipeRouter);

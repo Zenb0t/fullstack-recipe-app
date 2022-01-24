@@ -11,6 +11,16 @@ const RecipeSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    description: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    ingredients: {
+        type: [String],
+        required: true,
+        trim: true
+    },
     ingredientValueMap: {
         type: Map,
         of: Number,
