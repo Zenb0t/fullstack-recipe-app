@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import React from "react";
 import { MagicButton } from "./MagicButton";
 import { NavLink } from "react-router-dom";
-import SearchField from "./SearchField";
+import SearchBar from "./SearchBar";
 
 export const drawerWidth = 240;
 
@@ -48,7 +48,7 @@ function RecipeAppBar(props: { drawerToggle: Function }) {
                 <Typography variant="h6" noWrap component="div" sx={{flexGrow: 1}}>
                     Full Stack Recipes App
                 </Typography>
-                <SearchField />
+                <SearchBar />
             </Toolbar>
         </AppBar>
     );
