@@ -1,5 +1,5 @@
 import { Input, Stack } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { ImagePreview } from "../../../app/ImagePreview";
 
 
@@ -15,17 +15,14 @@ export default function ImageUpload(props: { formik: any, fieldName: string }) {
     const handleUpload = (event: ChangeEvent<HTMLInputElement>) => {
         let files = event.currentTarget.files;
         if (files && isValidImage(files[0])) {
-            setSelectedImage(URL.createObjectURL(files[0]));
             console.group("ImageUpload");
-            console.log(files[0]);
-            console.log(`selected image: ${selectedImage}`);
-            props.formik.setFieldValue(props.fieldName, selectedImage);
+            let image = URL.createObjectURL(files[0]);
+            console.log(image);
+            setSelectedImage(image);
+            console.info(`Image added: ${files[0].name}`);
             console.groupEnd();
-            console.info(`Image added: ${files[0].name}, \n selected image: ${selectedImage}`);
-            console.log(props.formik.values);
         } else {
             console.log(imageError);
-
         }
     }
 
@@ -45,6 +42,14 @@ export default function ImageUpload(props: { formik: any, fieldName: string }) {
         setImageError('');
         return true;
     }
+
+    //Adding the other dependencies to the useEffect hook will cause the component to re-render when the formik state changes
+    //which might create extra overhead and unkown side effects. Hence, linting is disabled for this hook.
+    useEffect(() => {
+        props.formik.setFieldValue(props.fieldName, selectedImage, false);
+        console.log(selectedImage)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedImage]);
 
     return (
         <Stack spacing={3} m={3} justifyContent="center" alignItems="center">
