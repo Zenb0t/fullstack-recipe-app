@@ -8,8 +8,9 @@ const ingredientRouter = require('./routes/ingredientRoutes');
 const recipeRouter = require('./routes/recipeRoutes');
 const userRouter = require('./routes/userRoutes');
 const expressSession = require("express-session");
-const passport = require("passport");
-const Auth0Strategy = require("passport-auth0");
+// const passport = require("passport");
+// const Auth0Strategy = require("passport-auth0");
+
 require("dotenv").config();
 
 // Session Configuration
@@ -39,6 +40,8 @@ const strategy = new Auth0Strategy(
         return done(null, profile);
     }
 );
+
+
 
 // App Config
 
